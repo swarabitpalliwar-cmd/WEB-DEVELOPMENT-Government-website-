@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholar Control Center Console</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="gov-header">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">NDL<span>Portal</span></a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Main Hub Home</a></li>
+                <li><a href="courses.html" class="nav-link">Catalogues</a></li>
+                <li><a href="index.html" class="nav-link" style="color:var(--accent-orange);" onclick="localStorage.removeItem('portalUser')">Disconnect Safe Node</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="grid-2" style="grid-template-columns: 1fr 2fr;">
+            <div style="background:white; padding:30px; border-radius:8px; box-shadow:var(--shadow-sm); text-align:center; height: fit-content;">
+                <div style="width:80px; height:80px; background:var(--primary-green); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:2rem; margin:0 auto 20px;">🎓</div>
+                <h3 id="dashboardWelcome" style="color:var(--text-dark); margin-bottom:10px;">Welcome Scholar!</h3>
+                <p style="font-size:0.85rem; color:#666;">Status Vector: <strong style="color:green;">Active Operator Node</strong></p>
+                <hr style="margin:20px 0; border:0; border-top:1px solid #eee;">
+                <p style="text-align:left; font-size:0.85rem; color:#555;"><strong>Asset Permissions:</strong> Open Reading Access Tier</p>
+            </div>
+
+            <div>
+                <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:15px; margin-bottom:30px;">
+                    <div style="background:white; padding:20px; border-radius:6px; box-shadow:var(--shadow-sm); text-align:center;">
+                        <h2 style="color:var(--primary-green);">14</h2>
+                        <p style="font-size:0.8rem; color:#777;">Bookmarks</p>
+                    </div>
+                    <div style="background:white; padding:20px; border-radius:6px; box-shadow:var(--shadow-sm); text-align:center;">
+                        <h2 style="color:var(--accent-orange);">03</h2>
+                        <p style="font-size:0.8rem; color:#777;">Active Tracks</p>
+                    </div>
+                    <div style="background:white; padding:20px; border-radius:6px; box-shadow:var(--shadow-sm); text-align:center;">
+                        <h2 style="color:#007bff;">02</h2>
+                        <p style="font-size:0.8rem; color:#777;">Publications</p>
+                    </div>
+                </div>
+
+                <div style="background:white; padding:30px; border-radius:8px; box-shadow:var(--shadow-sm);">
+                    <h3 style="margin-bottom:20px; font-size:1.2rem;">Recent Repository Operations Log</h3>
+                    <div style="display:flex; flex-direction:column; gap:15px;">
+                        <div style="display:flex; justify-content:between; align-items:center; border-bottom:1px solid #eee; padding-bottom:10px;">
+                            <div>
+                                <h4 style="font-size:1rem; margin-bottom:2px;">Introduction to HTML5 & Semantic Web</h4>
+                                <span style="font-size:0.8rem; color:#777;">Module Stream Segment 3</span>
+                            </div>
+                            <span style="background:#d4edda; color:#155724; padding:4px 8px; border-radius:20px; font-size:0.75rem; font-weight:bold; margin-left:auto;">85% Done</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

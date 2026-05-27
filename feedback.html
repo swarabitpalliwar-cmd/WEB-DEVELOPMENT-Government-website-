@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Framework Feedback Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="gov-header">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">NDL<span>Portal</span></a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="courses.html" class="nav-link">Courses</a></li>
+                <li><a href="feedback.html" class="nav-link active">Feedback</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="grid-2">
+            <div style="background:white; padding:30px; border-radius:8px; box-shadow:var(--shadow-sm);">
+                <h2 style="color:var(--primary-green); margin-bottom:10px;">Portal Performance Review</h2>
+                <p style="color:#666; font-size:0.9rem; margin-bottom:20px;">Your user experience assessments are saved natively inside temporary arrays.</p>
+
+                <form id="feedbackForm">
+                    <div class="form-group">
+                        <label>System Operations Rating Selector</label>
+                        <select id="ratingSelect" class="form-control" style="background:white;">
+                            <option value="5">★ ★ ★ ★ ★ (Excellent Infrastructure)</option>
+                            <option value="4">★ ★ ★ ★ ☆ (Highly Compliant)</option>
+                            <option value="3">★ ★ ★ ☆ ☆ (Adequate Execution)</option>
+                            <option value="2">★ ★ ☆ ☆ ☆ (Needs Refactoring)</option>
+                            <option value="1">★ ☆ ☆ ☆ ☆ (Major System Inefficiencies)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Evaluative Critique Commentary Notes</label>
+                        <textarea id="commentText" class="form-control" rows="4" required placeholder="Type operational review metrics or interface updates..." style="resize:none;"></textarea>
+                    </div>
+                    <button type="submit" class="gov-btn btn-orange" style="width:100%;">Commit Feedback Parameters</button>
+                </form>
+            </div>
+
+            <div style="background:white; padding:30px; border-radius:8px; box-shadow:var(--shadow-sm);">
+                <h3 style="margin-bottom:20px; color:var(--text-dark);">Dynamic Community Evaluation Registry</h3>
+                <div id="localFeedbackList" style="max-height:380px; overflow-y:auto; padding-right:10px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

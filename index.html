@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Digital Learning Portal - Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="gov-header">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">NDL<span>Portal</span></a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="courses.html" class="nav-link">Courses</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="feedback.html" class="nav-link">Feedback</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link" style="color: var(--accent-orange);">Account ▼</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="login.html">Login Access</a></li>
+                            <li><a href="register.html">Register Node</a></li>
+                            <li><a href="dashboard.html">Dashboard Console</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-banner">
+        <h1>National Digital Learning Repository Gateway</h1>
+        <p>Access single-window academic digital assets across diverse subject spaces.</p>
+        <div class="search-box-container">
+            <input type="text" class="search-input" placeholder="Search textbooks, video lectures, research indexing metrics...">
+            <button class="gov-btn btn-orange" onclick="window.location.href='courses.html'">Search</button>
+        </div>
+    </section>
+
+    <section class="carousel-viewport">
+        <div class="carousel-container" id="ndlCarouselContainer">
+            <div class="carousel-slide">
+                <img src="library image1.jpg" alt="Slide Image Primary">
+                <div class="carousel-caption">
+                    <h3>Empowering Indian Classrooms</h3>
+                    <p>Providing multi-tiered resources mapped closely with the national education policy architecture.</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="library image2.jpg" alt="Slide Image Secondary">
+                <div class="carousel-caption">
+                    <h3>Globally Recognized Open Research</h3>
+                    <p>Over thousands of journals, indexing databases, and dynamic learning materials instantly deployable.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-btn prev" id="carouselPrev">◀</button>
+        <button class="carousel-btn next" id="carouselNext">▶</button>
+    </section>
+
+    <main class="container">
+        <div class="section-title">
+            <h2>Educational Domain Gateways</h2>
+            <div class="title-line"></div>
+        </div>
+
+        <div class="grid-4">
+            <div class="domain-card">
+                <div class="icon-frame">🏫</div>
+                <h3>School Education</h3>
+                <p>Textbooks, notes, and visual resources for structural board layouts.</p>
+                <a href="courses.html" class="nav-link" style="color:var(--primary-green); font-weight:bold;">Browse Assets →</a>
+            </div>
+            <div class="domain-card">
+                <div class="icon-frame">🎓</div>
+                <h3>Higher Education</h3>
+                <p>Engineering, Science, Humanities degrees tracking content material matrices.</p>
+                <a href="courses.html" class="nav-link" style="color:var(--primary-green); font-weight:bold;">Browse Assets →</a>
+            </div>
+            <div class="domain-card">
+                <div class="icon-frame">🔬</div>
+                <h3>Research Core</h3>
+                <p>Peer-reviewed publications, state journals, and experimental project theses.</p>
+                <a href="courses.html" class="nav-link" style="color:var(--primary-green); font-weight:bold;">Browse Assets →</a>
+            </div>
+            <div class="domain-card">
+                <div class="icon-frame">💼</div>
+                <h3>Career Development</h3>
+                <p>Competitive exam mock questions, skill paths, and leadership prep items.</p>
+                <a href="courses.html" class="nav-link" style="color:var(--primary-green); font-weight:bold;">Browse Assets →</a>
+            </div>
+        </div>
+    </main>
+
+    <section class="counter-strip">
+        <div class="counter-grid">
+            <div class="counter-item">
+                <h3>7.4M+</h3>
+                <p>Indexed Digital Assets</p>
+            </div>
+            <div class="counter-item">
+                <h3>3.1M+</h3>
+                <p>Registered Scholars</p>
+            </div>
+            <div class="counter-item">
+                <h3>450+</h3>
+                <p>Institutional Hub Partners</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="gov-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>NDL Academic Portal</h4>
+                <p style="font-size:0.9rem; color:#888;">An inclusive digital environment supporting multi-disciplinary curriculum discovery for institutions nationwide.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Navigation</h4>
+                <ul>
+                    <li><a href="index.html">Home Base</a></li>
+                    <li><a href="about.html">About Portal</a></li>
+                    <li><a href="courses.html">Catalogues</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Official Location</h4>
+                <p style="font-size:0.9rem; color:#888;">Ministry of Digital Infrastructure Complex, New Delhi<br>Email: contact@ndlproject.gov.in</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Ministry of Education Academic Repository Portal. Pure Frontend Concept Setup.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+   

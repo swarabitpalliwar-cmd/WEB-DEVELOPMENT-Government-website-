@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Knowledge Repository - NDL</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="gov-header">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">NDL<span>Portal</span></a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="courses.html" class="nav-link active">Courses</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="feedback.html" class="nav-link">Feedback</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container">
+        <div style="background:white; padding:30px; border-radius:8px; box-shadow:var(--shadow-sm); margin-bottom:40px;">
+            <h2 style="color:var(--primary-green); margin-bottom:10px;">Centralized Course Repository</h2>
+            <p style="color:#666; margin-bottom:20px;">Use the search bar and filter criteria below to query our local JSON dataset in real time.</p>
+            
+            <div style="display:flex; gap:20px; flex-wrap:wrap;">
+                <input type="text" id="courseSearch" class="form-control" placeholder="Type keywords to filter active streams instantly..." style="flex:2; min-width:280px;">
+                <select id="categoryFilter" class="form-control" style="flex:1; min-width:180px; background:white;">
+                    <option value="All">All Curricular Categories</option>
+                    <option value="School Education">School Education</option>
+                    <option value="Higher Education">Higher Education</option>
+                    <option value="Research">Research</option>
+                    <option value="Career Development">Career Development</option>
+                </select>
+            </div>
+        </div>
+
+        <h3 style="margin-bottom:20px; color:var(--dark-green);">Live Available Stream Formats</h3>
+        <div class="grid-4" id="dynamicCourseGrid"></div>
+
+        <div style="margin-top:60px; background:white; padding:30px; border-radius:8px; box-shadow:var(--shadow-sm);">
+            <h3 style="margin-bottom:20px;">System Cross-Reference Directory Listing</h3>
+            <div class="table-responsive">
+                <table class="gov-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Serial ID</th>
+                            <th>Title Stream Designation</th>
+                            <th>Domain Core</th>
+                            <th>Affiliate Hub</th>
+                            <th>Complexity Vector</th>
+                        </tr>
+                    </thead>
+                    <tbody id="courseTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

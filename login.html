@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholar Access Verification Gate</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="gov-header">
+        <div class="nav-container"><a href="index.html" class="brand-logo">NDL<span>Portal</span></a></div>
+    </header>
+
+    <div class="auth-wrapper">
+        <div style="text-align:center; margin-bottom:30px;">
+            <h2 style="color:var(--primary-green);">Portal Scholar Login</h2>
+            <p style="color:#777; font-size:0.85rem;">Verify identity parameters to access institutional storage nodes.</p>
+        </div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label>Registered Identity Email</label>
+                <input type="email" id="email" class="form-control" placeholder="scholar@institution.edu" required>
+            </div>
+            <div class="form-group">
+                <label>Secure Security Key Password</label>
+                <div class="password-input-wrapper">
+                    <input type="password" id="password" class="form-control" placeholder="••••••••" required>
+                    <button type="button" id="togglePasswordBtn" class="password-toggle-btn">Show</button>
+                </div>
+            </div>
+            <button type="submit" class="gov-btn btn-green" style="width:100%; margin-top:10px;">Authorize Connection</button>
+        </form>
+        <div id="formFeedback"></div>
+        <p style="text-align:center; font-size:0.85rem; margin-top:20px; color:#555;">Identity signature not registered? <a href="register.html" style="color:var(--accent-orange); font-weight:bold; text-decoration:none;">Create Account →</a></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
