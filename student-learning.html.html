@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NDLI for School Education</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans', 'Segoe UI', Arial, sans-serif;
+  font-size: 14px;
+  color: #333;
+  background: #fff;
+}
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+
+
+.navbar {
+  background: linear-gradient(180deg, #1e3a24 0%, #24432a 100%);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #fff;
+}
+.nav-logo img { height: 34px; width: 34px; border-radius: 50%; }
+.nav-logo .txt { font-size: 11px; line-height: 1.25; color: #e8e8e8; }
+.nav-logo .txt strong { display: block; font-size: 12.5px; font-weight: 700; color: #fff; }
+
+.nav-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-avatar {
+  width: 34px; height: 34px;
+  display: flex; align-items: center; justify-content: center;
+  color: #cdd8cd;
+  font-size: 20px;
+}
+
+.nav-btn {
+  background: #fff;
+  color: #333;
+  border: 1px solid #d8e0d8;
+  border-radius: 4px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  transition: background .15s, box-shadow .15s;
+}
+.nav-btn:hover { background: #f2f6f2; text-decoration: none; box-shadow: 0 2px 6px rgba(0,0,0,.12); }
+.nav-btn i.caret { font-size: 10px; }
+
+.nav-btn.login-btn {
+  background: #3a7d44;
+  color: #fff;
+  border-color: #3a7d44;
+}
+.nav-btn.login-btn:hover { background: #2e6637; }
+
+.nav-fs {
+  color: #fff;
+  font-size: 17px;
+  cursor: pointer;
+  padding: 6px;
+}
+.nav-fs:hover { color: #cdd8cd; }
+
+.nav-dd { position: relative; }
+.nav-dd-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  background: #fff;
+  min-width: 210px;
+  border: 1px solid #ddd;
+  border-top: 3px solid #f47b20;
+  box-shadow: 0 6px 20px rgba(0,0,0,.16);
+  z-index: 3000;
+  border-radius: 0 0 4px 4px;
+  padding: 4px 0;
+}
+.nav-dd:hover .nav-dd-menu { display: block; }
+.nav-dd-menu a {
+  display: block;
+  padding: 9px 16px;
+  font-size: 12.5px;
+  color: #333;
+  border-bottom: 1px solid #f2f2f2;
+}
+.nav-dd-menu a:last-child { border-bottom: none; }
+.nav-dd-menu a:hover { background: #f2f6f2; color: #2e7d32; text-decoration: none; }
+.nav-dd-menu.lang-menu { column-count: 2; min-width: 280px; }
+.nav-dd-menu.lang-menu a { break-inside: avoid; border-bottom: none; }
+
+
+.nav-ham { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 6px; }
+.nav-ham span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: .25s; }
+.nav-ham.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-ham.open span:nth-child(2) { opacity: 0; }
+.nav-ham.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.logobar {
+  background: #fff;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+  position: relative;
+  z-index: 5;
+}
+.logobar .lb-group { display: flex; align-items: center; gap: 22px; }
+.logobar .sponsored { display: flex; align-items: center; gap: 8px; }
+.logobar .sponsored .sp-label {
+  font-size: 9px; color: #999; text-align: center; line-height: 1.2;
+}
+.logobar .sponsored .sp-label::before,
+.logobar .iitkgp .dev-label::before {
+  content: '— '; color: #f47b20;
+}
+.logobar .sponsored .sp-label::after,
+.logobar .iitkgp .dev-label::after {
+  content: ' —'; color: #f47b20;
+}
+.logobar .sponsored img { height: 40px; }
+.logobar .azadi img { height: 50px; }
+
+.explore-pill {
+  background: linear-gradient(180deg, #f7901f 0%, #e8641a 100%);
+  color: #fff;
+  border-radius: 30px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 3px 10px rgba(232,100,26,.35);
+  transition: transform .15s;
+  white-space: nowrap;
+}
+.explore-pill:hover { transform: translateY(-2px); text-decoration: none; }
+
+.logobar .digital-india img { height: 36px; }
+.logobar .iitkgp { display: flex; flex-direction: column; align-items: center; }
+.logobar .iitkgp .dev-label { font-size: 8.5px; color: #999; margin-bottom: 2px; }
+.logobar .iitkgp img { height: 40px; }
+
+.hero {
+  position: relative;
+  background:
+    linear-gradient(135deg, rgba(20,45,28,.96) 0%, rgba(35,66,42,.93) 50%, rgba(28,58,36,.96) 100%),
+    radial-gradient(circle at 70% 40%, #2f5a38 0%, #1c3a24 70%);
+  background-color: #1c3a24;
+  padding: 48px 20px 60px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+.hero-logo img { height: 56px; width: 56px; border-radius: 50%; }
+.hero-logo .txt {
+  text-align: left;
+  color: #fff;
+  font-size: 17px;
+  line-height: 1.2;
+  font-weight: 400;
+}
+.hero-logo .txt strong { font-weight: 700; }
+
+.hero h1 {
+  font-family: 'Poppins', 'Noto Sans', sans-serif;
+  font-size: 54px;
+  font-weight: 800;
+  color: #f5f0e1;
+  letter-spacing: 0.5px;
+  margin-bottom: 22px;
+  text-shadow: 0 2px 8px rgba(0,0,0,.3);
+}
+
+.hero-taglines {
+  color: #dfe8df;
+  font-size: 16px;
+  line-height: 1.9;
+  margin-bottom: 34px;
+  font-weight: 400;
+}
+
+.hero-search {
+  display: flex;
+  max-width: 760px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 40px;
+  padding: 6px;
+  box-shadow: 0 6px 24px rgba(0,0,0,.25);
+  align-items: center;
+}
+.hero-search select {
+  border: none;
+  background: transparent;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 14px;
+  color: #444;
+  padding: 0 16px;
+  height: 42px;
+  cursor: pointer;
+  border-right: 1px solid #e0e0e0;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath fill='%23888' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 6px center;
+  padding-right: 26px;
+}
+.hero-search select:focus { outline: none; }
+.hero-search input {
+  flex: 1;
+  border: none;
+  padding: 0 20px;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 14.5px;
+  color: #555;
+  background: transparent;
+  height: 42px;
+}
+.hero-search input:focus { outline: none; }
+.hero-search input::placeholder { color: #aaa; }
+.hero-search .search-btn {
+  background: #2e7d32;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 0 26px;
+  height: 44px;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 14.5px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background .15s;
+  white-space: nowrap;
+}
+.hero-search .search-btn:hover { background: #1f5c23; }
+
+.prep-section {
+  background: #f4f4f4;
+  padding: 36px 0;
+}
+.prep-heading {
+  font-family: 'Poppins', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #2d4a2f;
+  margin-bottom: 6px;
+}
+.prep-rule {
+  border: none;
+  border-top: 2px solid #ccc;
+  width: 380px;
+  max-width: 60%;
+  margin: 0 0 26px;
+}
+.prep-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+.prep-card {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: transform .15s, box-shadow .15s;
+  cursor: pointer;
+}
+.prep-card:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,.1); text-decoration: none; }
+.prep-card .prep-icon {
+  width: 42px; height: 42px;
+  border-radius: 8px;
+  background: #eef4ee;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  color: #2e7d32;
+  font-size: 18px;
+}
+.prep-card .prep-info { line-height: 1.3; }
+.prep-card .prep-name { font-size: 14px; font-weight: 700; color: #333; }
+.prep-card .prep-year { font-size: 12px; color: #888; }
+
+
+.browse-section { padding: 30px 0 10px; }
+.domain-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #2d4a2f;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid #f47b20;
+  display: inline-block;
+}
+.browse-block { margin-bottom: 24px; }
+.browse-block h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #2d4a2f;
+  margin-bottom: 11px;
+  padding-left: 9px;
+  border-left: 4px solid #f47b20;
+}
+.tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag {
+  background: #eef4ee;
+  color: #2d4a2f;
+  border: 1px solid #c8ddc8;
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 12.5px;
+  font-weight: 600;
+  transition: background .14s, color .14s;
+  cursor: pointer;
+}
+.tag:hover { background: #2e7d32; color: #fff; border-color: #2e7d32; text-decoration: none; }
+.tag.more { background: #f47b20; color: #fff; border-color: #f47b20; }
+.tag.more:hover { background: #d4641a; border-color: #d4641a; }
+
+.feat-divider { border: none; border-top: 2px solid #e5e5e5; margin: 24px 0; }
+.feat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 14px;
+  margin-bottom: 30px;
+}
+.feat-card {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  background: #f0f0f0;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  transition: transform .18s, box-shadow .18s;
+}
+.feat-card:hover { transform: translateY(-3px); box-shadow: 0 7px 20px rgba(0,0,0,.15); text-decoration: none; }
+.feat-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+.feat-cap {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(20,45,28,.85));
+  color: #fff; font-size: 11.5px; font-weight: 600;
+  padding: 20px 8px 8px; line-height: 1.35;
+  pointer-events: none;
+}
+.nmeict { background: #f4f4f4; padding: 30px 0; }
+.nmeict-card {
+  background: #fff;
+  display: flex;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 8px rgba(0,0,0,.08);
+}
+.nmeict-left { flex: 1; padding: 30px 34px; }
+.nmeict-wordmark { font-size: 34px; font-weight: 900; letter-spacing: -1px; margin-bottom: 4px; }
+.nmeict-wordmark .n { color: #e82020; }
+.nmeict-wordmark .rest { color: #1c3a24; }
+.nmeict-subtitle { font-size: 9px; color: #555; border-top: 2px solid #e82020; display: inline-block; padding-top: 3px; margin-bottom: 20px; }
+.nmeict-left h3 { font-size: 15px; font-weight: 700; color: #2d4a2f; margin-bottom: 10px; line-height: 1.4; }
+.nmeict-left p { font-size: 12.5px; color: #444; line-height: 1.6; margin-bottom: 18px; }
+.partner-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.partner-tile {
+  border: 1px solid #e0e0e0; border-radius: 4px;
+  height: 52px; min-width: 92px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 6px 10px; cursor: pointer; transition: box-shadow .15s;
+}
+.partner-tile:hover { box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+.partner-tile img { max-height: 34px; max-width: 100px; object-fit: contain; }
+.nmeict-learn { font-size: 12.5px; color: #444; }
+.nmeict-learn a { color: #2d7dd2; }
+.nmeict-learn a:hover { text-decoration: underline; }
+.nmeict-right { width: 36%; flex-shrink: 0; position: relative; overflow: hidden; }
+.nmeict-right img { width: 100%; height: 100%; object-fit: cover; }
+.nmeict-right::before { content:''; position:absolute; top:-30px; left:-50px; width:180px; height:180px; background:#3a7a2a; border-radius:50%; opacity:.55; z-index:1; }
+.nmeict-right::after { content:''; position:absolute; bottom:-30px; left:20px; width:150px; height:150px; background:#f47b20; border-radius:55% 45% 50% 50%; opacity:.6; z-index:1; }
+
+.footer { background: #24432a; color: #c8dab8; padding: 36px 0 0; }
+.footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; padding-bottom: 28px; }
+.footer-col h4 { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 14px; display: flex; align-items: center; gap: 7px; }
+.footer-col h4 i { font-size: 13px; color: #8bc34a; }
+.footer-col ul li { margin-bottom: 9px; }
+.footer-col ul li a { font-size: 13px; color: #b0c89a; display: flex; align-items: center; gap: 6px; transition: color .14s; }
+.footer-col ul li a::before { content: '▶'; font-size: 7px; color: #8bc34a; flex-shrink: 0; }
+.footer-col ul li a:hover { color: #fff; text-decoration: none; }
+.app-badges { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.app-badge { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); border-radius: 8px; width: 54px; height: 54px; display: flex; align-items: center; justify-content: center; transition: background .15s; }
+.app-badge:hover { background: rgba(255,255,255,.22); }
+.app-badge img { height: 34px; width: 34px; object-fit: contain; }
+.footer-bottom { background: #1e3714; border-top: 1px solid rgba(255,255,255,.1); padding: 12px 20px; display: flex; align-items: center; flex-wrap: wrap; gap: 14px; }
+.footer-bottom .copy { font-size: 11.5px; color: #8bc34a; flex: 1 1 320px; }
+.footer-bottom .copy a { color: #a0d060; text-decoration: underline; }
+.footer-bottom .iso { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #b0c89a; }
+.footer-bottom .iso img { height: 30px; }
+.footer-bottom .social { display: flex; gap: 7px; margin-left: auto; }
+.footer-bottom .social a { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; color: #fff; }
+.footer-bottom .social a:hover { opacity: .82; text-decoration: none; }
+.s-fb { background:#1877f2; } .s-tw { background:#000; } .s-th { background:#000; }
+.s-yt { background:#ff0000; } .s-li { background:#0a66c2; }
+.s-ig { background: radial-gradient(circle at 30% 107%, #fdf497, #fd5949 45%, #d6249f 60%, #285aeb 90%); }
+
+
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 9000; align-items: center; justify-content: center; }
+.modal-overlay.open { display: flex; }
+.modal-box { background: #fff; border-radius: 6px; padding: 28px 32px; max-width: 400px; width: 92%; box-shadow: 0 10px 40px rgba(0,0,0,.3); }
+.modal-box h5 { font-size: 16px; font-weight: 700; color: #2d4a2f; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 2px solid #f47b20; }
+.modal-box label { display: block; font-size: 12px; color: #555; font-weight: 600; margin-top: 12px; margin-bottom: 4px; }
+.modal-box input[type=email], .modal-box input[type=password] { width: 100%; border: 1px solid #cdd; border-radius: 3px; padding: 8px 10px; font-size: 13px; color: #333; font-family: 'Noto Sans', sans-serif; }
+.modal-box input:focus { outline: none; border-color: #2e7d32; }
+.modal-small { font-size: 12px; color: #666; margin-top: 10px; line-height: 1.8; }
+.modal-small a { color: #2e7d32; text-decoration: underline; }
+.modal-check { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #555; margin-top: 9px; cursor: pointer; }
+.modal-actions { display: flex; gap: 10px; margin-top: 16px; }
+.btn-login { background: #2e7d32; color: #fff; border: none; padding: 9px 22px; border-radius: 3px; font-family:'Noto Sans',sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; }
+.btn-login:hover { background: #1f5c23; }
+.btn-cancel { background: none; border: 1px solid #ccc; color: #555; padding: 9px 16px; border-radius: 3px; font-family:'Noto Sans',sans-serif; font-size: 13px; cursor: pointer; }
+.btn-cancel:hover { background: #f5f5f5; }
+
+
+@media (max-width: 991px) {
+  .prep-grid { grid-template-columns: repeat(3, 1fr); }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero h1 { font-size: 40px; }
+}
+@media (max-width: 767px) {
+  .nav-ham { display: flex; }
+  .nav-right { display: none; position: absolute; top: 58px; left: 0; right: 0; background: #1e3a24; flex-direction: column; align-items: stretch; padding: 10px; gap: 8px; box-shadow: 0 4px 14px rgba(0,0,0,.3); z-index: 999; }
+  .nav-right.open { display: flex; }
+  .nav-btn, .nav-dd { width: 100%; }
+  .nav-dd-menu { position: static; box-shadow: none; }
+  .nav-avatar { display: none; }
+  .logobar { justify-content: center; }
+  .logobar .lb-group { gap: 14px; flex-wrap: wrap; justify-content: center; }
+  .hero h1 { font-size: 30px; }
+  .hero-taglines { font-size: 13.5px; }
+  .hero-search { flex-wrap: wrap; border-radius: 12px; }
+  .hero-search select, .hero-search input { width: 100%; border-right: none; }
+  .hero-search .search-btn { width: 100%; justify-content: center; margin-top: 6px; }
+  .prep-grid { grid-template-columns: repeat(2, 1fr); }
+  .feat-grid { grid-template-columns: repeat(2, 1fr); }
+  .nmeict-card { flex-direction: column; }
+  .nmeict-right { width: 100%; height: 200px; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .footer-bottom .social { margin-left: 0; }
+}
+  </style>
+</head>
+<body>
+
+
+<nav class="navbar" id="navbar">
+  <a href="#" class="nav-logo">
+    <img src="https://www.ndl.gov.in/assets/img/ndli-logo-lg-white.svg" alt="NDLI"
+         onerror="this.style.background='#fff';this.style.padding='4px';" />
+    <span class="txt"><strong>National</strong>Digital Library<br>of India</span>
+  </a>
+
+  <button class="nav-ham" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+
+  <div class="nav-right" id="navRight">
+    <span class="nav-avatar"><i class="fas fa-user-graduate"></i></span>
+
+    <!-- Browse dropdown -->
+    <div class="nav-dd">
+      <button class="nav-btn">Browse <i class="fas fa-caret-down caret"></i></button>
+      <div class="nav-dd-menu">
+        <a href="#">Educational Boards</a>
+        <a href="#">Educational Levels</a>
+        <a href="#">Subjects</a>
+        <a href="#">Resource Types</a>
+        <a href="#">Languages</a>
+        <a href="#">Content Providers</a>
+      </div>
+    </div>
+
+    
+    <button class="nav-btn" id="switchPrefBtn">Switch Preference</button>
+
+    
+    <div class="nav-dd">
+      <button class="nav-btn">Language <i class="fas fa-caret-down caret"></i></button>
+      <div class="nav-dd-menu lang-menu">
+        <a href="#">অসমীয়া</a><a href="#">বাংলা</a><a href="#">English</a>
+        <a href="#">ગુજરાતી</a><a href="#">हिंदी</a><a href="#">ಕನ್ನಡ</a>
+        <a href="#">മലയാളം</a><a href="#">मराठी</a><a href="#">தமிழ்</a>
+        <a href="#">తెలుగు</a><a href="#">ਪੰਜਾਬੀ</a><a href="#">اردو</a>
+      </div>
+    </div>
+
+   
+    <button class="nav-btn login-btn" id="loginNavBtn"><i class="fas fa-user"></i> Log-in</button>
+
+    
+    <span class="nav-fs" id="fsBtn" title="Fullscreen"><i class="fas fa-expand"></i></span>
+  </div>
+</nav>
+
+
+<div class="logobar">
+  <div class="lb-group">
+    <div class="sponsored">
+      <span class="sp-label">Sponsored by</span>
+      <img src="https://www.ndl.gov.in/assets/img/ministry-edu.svg" alt="Ministry of Education" />
+    </div>
+    <div class="azadi">
+      <img src="https://www.ndl.gov.in/assets/img/azadi.svg" alt="Azadi Ka Amrit Mahotsav" />
+    </div>
+  </div>
+
+  <a href="#" class="explore-pill"><i class="fas fa-graduation-cap"></i> Explore Courses</a>
+
+  <div class="lb-group">
+    <div class="digital-india">
+      <img src="https://www.ndl.gov.in/assets/img/digital-india.svg" alt="Digital India" />
+    </div>
+    <div class="iitkgp">
+      <span class="dev-label">Developed by</span>
+      <img src="https://www.ndl.gov.in/assets/img/landing-devel-iitkgp.svg" alt="IIT Kharagpur" />
+    </div>
+  </div>
+</div>
+
+
+<section class="hero">
+  <div class="hero-logo">
+    <img src="https://www.ndl.gov.in/assets/img/ndli-logo-lg-white.svg" alt="NDLI"
+         onerror="this.style.background='#fff';this.style.padding='6px';" />
+    <span class="txt"><strong>National</strong><br>Digital Library<br>of India</span>
+  </div>
+
+  <h1>One Library All of India</h1>
+
+  <div class="hero-taglines">
+    A Movement for Integrated Digital Learning Across India<br>
+    A Single Window Towards Paradigm Shift in Indian Education<br>
+    A Single-Source Knowledge Repository<br>
+    Democratizing Education, Learning Beyond Boundaries
+  </div>
+
+  <div class="hero-search">
+    <select aria-label="Language">
+      <option>English</option>
+      <option>हिंदी</option>
+      <option>বাংলা</option>
+      <option>தமிழ்</option>
+      <option>తెలుగు</option>
+      <option>ಕನ್ನಡ</option>
+      <option>മലയാളം</option>
+      <option>मराठी</option>
+      <option>ਪੰਜਾਬੀ</option>
+      <option>ଓଡ଼ିଆ</option>
+    </select>
+    <input type="text" id="heroSearch" placeholder="Search career development resources..." />
+    <button class="search-btn" id="heroSearchBtn"><i class="fas fa-search"></i> Search</button>
+  </div>
+</section>
+
+
+<section class="prep-section">
+  <div class="container">
+    <h2 class="prep-heading">NDLI Exclusive Test Preparatory Series</h2>
+    <hr class="prep-rule" />
+    <div class="prep-grid">
+      <a href="#" class="prep-card">
+        <span class="prep-icon"><i class="fas fa-stethoscope"></i></span>
+        <span class="prep-info"><span class="prep-name">NEET</span><span class="prep-year">2025</span></span>
+      </a>
+      <a href="#" class="prep-card">
+        <span class="prep-icon"><i class="fas fa-atom"></i></span>
+        <span class="prep-info"><span class="prep-name">JEE Main</span><span class="prep-year">2026</span></span>
+      </a>
+      <a href="#" class="prep-card">
+        <span class="prep-icon"><i class="fas fa-train"></i></span>
+        <span class="prep-info"><span class="prep-name">RRB GD</span><span class="prep-year">2025</span></span>
+      </a>
+      <a href="#" class="prep-card">
+        <span class="prep-icon"><i class="fas fa-landmark"></i></span>
+        <span class="prep-info"><span class="prep-name">IBPS Clerk</span><span class="prep-year">2026</span></span>
+      </a>
+      <a href="#" class="prep-card">
+        <span class="prep-icon"><i class="fas fa-landmark"></i></span>
+        <span class="prep-info"><span class="prep-name">IBPS PO</span><span class="prep-year">2026</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<section class="browse-section">
+  <div class="container">
+    <h2 class="domain-title">School Education</h2>
+
+    
+    <div class="browse-block">
+      <h3>Subjects</h3>
+      <div class="tag-row">
+        <a href="#" class="tag">Physics</a><a href="#" class="tag">Chemistry</a>
+        <a href="#" class="tag">Mathematics</a><a href="#" class="tag">Biology</a>
+        <a href="#" class="tag">Commerce</a><a href="#" class="tag">History</a>
+        <a href="#" class="tag">Geography</a><a href="#" class="tag">Economics</a>
+        <a href="#" class="tag">Vocational Studies</a><a href="#" class="tag">General Science</a>
+        <a href="#" class="tag">Computer Science</a><a href="#" class="tag">The Arts</a>
+        <a href="#" class="tag">English</a><a href="#" class="tag">Political Science</a>
+        <a href="#" class="tag">Regional Languages</a><a href="#" class="tag more">View More</a>
+      </div>
+    </div>
+
+    <div class="browse-block">
+      <h3>Educational Levels</h3>
+      <div class="tag-row">
+        <a href="#" class="tag">Class I</a><a href="#" class="tag">Class II</a>
+        <a href="#" class="tag">Class III</a><a href="#" class="tag">Class IV</a>
+        <a href="#" class="tag">Class V</a><a href="#" class="tag">Class VI</a>
+        <a href="#" class="tag">Class VII</a><a href="#" class="tag">Class VIII</a>
+        <a href="#" class="tag">Class IX</a><a href="#" class="tag">Class X</a>
+        <a href="#" class="tag">Class XI</a><a href="#" class="tag">Class XII</a>
+        <a href="#" class="tag">JEE Main Preparatory</a><a href="#" class="tag">JEE Advanced Preparatory</a>
+        <a href="#" class="tag">NEET (UG) Preparatory</a><a href="#" class="tag more">View More</a>
+      </div>
+    </div>
+
+    <div class="browse-block">
+      <h3>Contents in Indian Languages</h3>
+      <div class="tag-row">
+        <a href="#" class="tag">Assamese</a><a href="#" class="tag">Bengali</a>
+        <a href="#" class="tag">Bodo/Boro</a><a href="#" class="tag">Dogri</a>
+        <a href="#" class="tag">Garo</a><a href="#" class="tag">Gujarati</a>
+        <a href="#" class="tag">Hindi</a><a href="#" class="tag">Kannada</a>
+        <a href="#" class="tag">Kashmiri</a><a href="#" class="tag">Khasi</a>
+        <a href="#" class="tag">Konkani</a><a href="#" class="tag">Maithili</a>
+        <a href="#" class="tag">Malayalam</a><a href="#" class="tag">Marathi</a>
+        <a href="#" class="tag">Manipuri</a><a href="#" class="tag">Nepali</a>
+        <a href="#" class="tag">Odia</a><a href="#" class="tag">Punjabi</a>
+        <a href="#" class="tag">Sanskrit</a><a href="#" class="tag">Santali</a>
+        <a href="#" class="tag">Sindhi</a><a href="#" class="tag">Tamil</a>
+        <a href="#" class="tag">Telugu</a><a href="#" class="tag">Urdu</a>
+        <a href="#" class="tag more">View More</a>
+      </div>
+    </div>
+
+    <div class="browse-block">
+      <h3>State Boards</h3>
+      <div class="tag-row">
+        <a href="#" class="tag">Andhra Pradesh</a><a href="#" class="tag">Arunachal Pradesh</a>
+        <a href="#" class="tag">Assam</a><a href="#" class="tag">Bihar</a>
+        <a href="#" class="tag">Chandigarh</a><a href="#" class="tag">Chhattisgarh</a>
+        <a href="#" class="tag">Gujarat</a><a href="#" class="tag">Haryana</a>
+        <a href="#" class="tag">Himachal Pradesh</a><a href="#" class="tag">Jammu &amp; Kashmir</a>
+        <a href="#" class="tag">Karnataka</a><a href="#" class="tag">Kerala</a>
+        <a href="#" class="tag">Madhya Pradesh</a><a href="#" class="tag">Maharashtra</a>
+        <a href="#" class="tag">Manipur</a><a href="#" class="tag">Nagaland</a>
+        <a href="#" class="tag">Odisha</a><a href="#" class="tag">Punjab</a>
+        <a href="#" class="tag">Rajasthan</a><a href="#" class="tag">Sikkim</a>
+        <a href="#" class="tag">Tamil Nadu</a><a href="#" class="tag">Telangana</a>
+        <a href="#" class="tag">Tripura</a><a href="#" class="tag">Uttarakhand</a>
+        <a href="#" class="tag">Uttar Pradesh</a><a href="#" class="tag">West Bengal</a>
+        <a href="#" class="tag more">View More</a>
+      </div>
+    </div>
+
+    <div class="browse-block">
+      <h3>Academic Resource Types</h3>
+      <div class="tag-row">
+        <a href="#" class="tag">Text Book</a><a href="#" class="tag">Audio Lecture</a>
+        <a href="#" class="tag">Video Lecture</a><a href="#" class="tag">Assessment</a>
+        <a href="#" class="tag">Educational Game</a><a href="#" class="tag">Data and Graph</a>
+        <a href="#" class="tag more">View More</a>
+      </div>
+    </div>
+
+    <div class="browse-block">
+      <h3>Additional/Non-Academic Resource Types</h3>
+      <div class="tag-row">
+        <a href="#" class="tag">Story Book</a><a href="#" class="tag">Audio Book</a>
+        <a href="#" class="tag">Activity Book</a><a href="#" class="tag">Films and Music</a>
+        <a href="#" class="tag">Art and Literary Works</a><a href="#" class="tag more">View More</a>
+      </div>
+    </div>
+
+    <hr class="feat-divider" />
+    <div class="feat-grid">
+      <a href="#" class="feat-card"><img src="https://www.ndl.gov.in/assets/img/featured/se/123456789_iitjeemain_3841.jpg" alt="JEE Main" loading="lazy"><span class="feat-cap">JEE Main Question Papers with Solutions</span></a>
+      <a href="#" class="feat-card"><img src="https://www.ndl.gov.in/assets/img/featured/se/123456789_iitjeeadv_3838.jpg" alt="JEE Advanced" loading="lazy"><span class="feat-cap">JEE Advanced Question Paper with Solutions</span></a>
+      <a href="#" class="feat-card"><img src="https://www.ndl.gov.in/assets/img/featured/se/123456789_neet_root_neet.jpg" alt="NEET" loading="lazy"><span class="feat-cap">NEET (UG) Question Paper with Solutions</span></a>
+      <a href="#" class="feat-card"><img src="https://www.ndl.gov.in/assets/img/featured/se/ncert_ciet_IN__N_C__1_2.jpg" alt="NCERT Audio" loading="lazy"><span class="feat-cap">NCERT Textbooks in audio format by CIET</span></a>
+      <a href="#" class="feat-card"><img src="https://www.ndl.gov.in/assets/img/featured/se/iitpal_IN__I_P__1_2.jpg" alt="IIT PAL" loading="lazy"><span class="feat-cap">Video Lectures on Science subjects by IIT Professors</span></a>
+      <a href="#" class="feat-card"><img src="https://www.ndl.gov.in/assets/img/featured/se/nios_IN__N_I_o_O_S____1_2.jpg" alt="NIOS" loading="lazy"><span class="feat-cap">National Institute of Open Schooling Courses</span></a>
+      <a href="#" class="feat-card"><img src="https://www.ndl.gov.in/assets/img/featured/se/minutephysics_qyi5svplmxc_pl908547eaa7e4ae74.jpg" alt="Physics videos" loading="lazy"><span class="feat-cap">Videos on amusing topics of physics</span></a>
+      <a href="#" class="feat-card"><img src="https://www.ndl.gov.in/assets/img/featured/se/yt_periodicvideos_6rdmpx39prk_pl7a1f4cf36c085de1.jpg" alt="Periodic videos" loading="lazy"><span class="feat-cap">Learn about the chemical elements</span></a>
+      <a href="#" class="feat-card"><img src="https://www.ndl.gov.in/assets/img/featured/se/ncert_IN__N__1_2.jpg" alt="NCERT" loading="lazy"><span class="feat-cap">NCERT Textbooks</span></a>
+      <a href="#" class="feat-card"><img src="https://www.ndl.gov.in/assets/img/featured/se/cisce_IN__C_f_t_I_S_C_E____1_2.jpg" alt="CISCE" loading="lazy"><span class="feat-cap">Question Papers of ICSE and ISC Examination</span></a>
+      <a href="#" class="feat-card"><img src="https://www.ndl.gov.in/assets/img/featured/se/swayamprabha_se_IN__S_P__1_N_b_e_l_v_o_S_P__3_4.jpg" alt="Swayam Prabha" loading="lazy"><span class="feat-cap">NCERT-based e-learning videos on Swayam Prabha Platform</span></a>
+    </div>
+  </div>
+</section>
+
+
+<section class="nmeict">
+  <div class="container">
+    <div class="nmeict-card">
+      <div class="nmeict-left">
+        <div class="nmeict-wordmark"><span class="n">N</span><span class="rest">MEICT</span></div>
+        <div class="nmeict-subtitle">National Mission on Education Through ICT</div>
+        <h3>National Mission on Education through Information and Communication Technology (NMEICT)</h3>
+        <p>To make learning resources available through a single-window to the learners, National Mission on Education through Information and Communication Technology (NMEICT) has sponsored the National Digital Library of India (NDLI) project and arranged funding through Ministry of Education, Govt. of India</p>
+        <div class="partner-grid">
+          <div class="partner-tile"><img src="https://www.ndl.gov.in/assets/img/icons/nmeict-projects/Virtual-Labs.jpg" alt="Virtual Labs"></div>
+          <div class="partner-tile"><img src="https://www.ndl.gov.in/assets/img/icons/nmeict-projects/Shodhganga.png" alt="Shodhganga"></div>
+          <div class="partner-tile"><img src="https://www.ndl.gov.in/assets/img/icons/nmeict-projects/fossee.png" alt="FOSSEE"></div>
+          <div class="partner-tile"><img src="https://www.ndl.gov.in/assets/img/icons/nmeict-projects/samarthegov.png" alt="Samarth"></div>
+          <div class="partner-tile"><img src="https://www.ndl.gov.in/assets/img/icons/nmeict-projects/vidwan.png" alt="Vidwan"></div>
+          <div class="partner-tile"><img src="https://www.ndl.gov.in/assets/img/icons/nmeict-projects/swayam.jpg" alt="SWAYAM"></div>
+          <div class="partner-tile"><img src="https://www.ndl.gov.in/assets/img/icons/nmeict-projects/Swayam-Prabha.jpg" alt="Swayam Prabha"></div>
+          <div class="partner-tile"><img src="https://www.ndl.gov.in/assets/img/icons/nmeict-projects/abc.jpg" alt="ABC"></div>
+          <div class="partner-tile"><img src="https://www.ndl.gov.in/assets/img/icons/nmeict-projects/neat.jpg" alt="NEAT"></div>
+        </div>
+        <p class="nmeict-learn"><a href="#">Learn more</a> about other Initiatives by Dept. of Higher Education, Ministry of Education, Govt. of India</p>
+      </div>
+      <div class="nmeict-right">
+        <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?w=600&q=80&auto=format&fit=crop" alt="Students"
+             onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iI2NjZGRjYyIvPjwvc3ZnPg=='">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4><i class="fas fa-info-circle"></i> About</h4>
+        <ul>
+          <li><a href="#">About NDLI</a></li><li><a href="#">Disclaimer</a></li>
+          <li><a href="#">Sponsor</a></li><li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms and Conditions</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-question-circle"></i> Guidelines</h4>
+        <ul>
+          <li><a href="#">Copyright Guide for Indian Libraries</a></li>
+          <li><a href="#">Institutional Registration</a></li>
+          <li><a href="#">Sitemap</a></li><li><a href="#">Branding</a></li>
+          <li><a href="#">Code of Conduct</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-share-alt"></i> Our Services</h4>
+        <ul>
+          <li><a href="#">NDLI Club</a></li>
+          <li><a href="#">IDR Hosting Service</a></li>
+          <li><a href="#">Institutional Digital Library (IDL) Service</a></li>
+          <li><a href="#">Digital Preservation Centre (DPC)</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-phone"></i> Contact Us</h4>
+        <ul>
+          <li><a href="#">Contact</a></li><li><a href="#">Feedback</a></li>
+        </ul>
+        <h4 style="margin-top:18px;"><i class="fas fa-download"></i> Available on</h4>
+        <div class="app-badges">
+          <a href="#" class="app-badge"><img src="https://www.ndl.gov.in/assets/img/appsore.jpg" alt="App Store" onerror="this.parentElement.innerHTML='<i class=\'fab fa-apple\' style=\'font-size:24px;color:#fff\'></i>'"></a>
+          <a href="#" class="app-badge"><img src="https://www.ndl.gov.in/assets/img/google-play.jpg" alt="Google Play" onerror="this.parentElement.innerHTML='<i class=\'fab fa-google-play\' style=\'font-size:22px;color:#fff\'></i>'"></a>
+          <a href="#" class="app-badge"><img src="https://www.ndl.gov.in/assets/img/umang.jpg" alt="UMANG" onerror="this.parentElement.innerHTML='<span style=\'font-size:9px;font-weight:700;color:#fff\'>UMANG</span>'"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="copy">
+      Site best viewed in 1280 x 720 pixels resolution or higher; and JavaScript should be enabled
+      &nbsp;|&nbsp; <a href="#">Supported browsers</a><br>
+      &copy; Copyright 2026 National Digital Library of India (NDLI)
+    </div>
+    <div class="iso">
+      <span>ISO 9001:2015 Certified</span>
+      <img src="https://www.ndl.gov.in/assets/img/ISO_9001-2015.svg" alt="ISO" onerror="this.style.display='none'">
+    </div>
+    <div class="social">
+      <a href="#" class="s-fb"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="s-tw"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" class="s-th"><i class="fab fa-threads"></i></a>
+      <a href="#" class="s-yt"><i class="fab fa-youtube"></i></a>
+      <a href="#" class="s-li"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" class="s-ig"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</footer>
+
+
+<div class="modal-overlay" id="loginModal">
+  <div class="modal-box">
+    <h5>Log-in</h5>
+    <label for="lemail">Email</label>
+    <input type="email" id="lemail" placeholder="Email" />
+    <label for="lpass">Password</label>
+    <input type="password" id="lpass" placeholder="Password" />
+    <p class="modal-small">Do not have an account? <a href="#">Register Now</a><br>Forgot your password? <a href="#">Account recovery</a></p>
+    <label class="modal-check"><input type="checkbox" /> &nbsp;Keep me Logged-in</label>
+    <div class="modal-actions">
+      <button class="btn-login" id="loginSubmit">Log-in</button>
+      <button class="btn-cancel" id="loginClose">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+'use strict';
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+
+/* hamburger */
+const ham = $('#hamburger'), navRight = $('#navRight');
+ham.addEventListener('click', () => {
+  const o = navRight.classList.toggle('open');
+  ham.classList.toggle('open', o);
+});
+
+
+const modal = $('#loginModal');
+const open  = () => { modal.classList.add('open');    document.body.style.overflow='hidden'; };
+const close = () => { modal.classList.remove('open'); document.body.style.overflow=''; };
+$('#loginNavBtn').addEventListener('click', e => { e.preventDefault(); open(); });
+$('#loginClose').addEventListener('click', close);
+modal.addEventListener('click', e => { if(e.target===modal) close(); });
+document.addEventListener('keydown', e => { if(e.key==='Escape') close(); });
+$('#loginSubmit').addEventListener('click', () => {
+  const em=$('#lemail').value.trim(), pw=$('#lpass').value.trim();
+  if(!em||!pw){ alert('Please enter email and password.'); return; }
+  alert('Login is UI-only.\nEmail: '+em); close();
+});
+
+
+$('#switchPrefBtn').addEventListener('click', () => alert('Switch Preference is UI-only in this clone.'));
+
+
+$('#fsBtn').addEventListener('click', () => {
+  if(!document.fullscreenElement){ document.documentElement.requestFullscreen().catch(()=>{}); $('#fsBtn').innerHTML='<i class="fas fa-compress"></i>'; }
+  else { document.exitFullscreen().catch(()=>{}); $('#fsBtn').innerHTML='<i class="fas fa-expand"></i>'; }
+});
+document.addEventListener('fullscreenchange', () => { if(!document.fullscreenElement) $('#fsBtn').innerHTML='<i class="fas fa-expand"></i>'; });
+
+
+function doSearch(){ const q=$('#heroSearch').value.trim(); if(!q){$('#heroSearch').focus();return;} alert('Search (UI only): "'+q+'"'); }
+$('#heroSearchBtn').addEventListener('click', doSearch);
+$('#heroSearch').addEventListener('keydown', e => { if(e.key==='Enter') doSearch(); });
+
+
+$$('a[href="#"]').forEach(a => a.addEventListener('click', e => {
+  if(a.id==='loginNavBtn') return;
+  e.preventDefault();
+}));
+$$('.nav-dd > button, .hero-search select').forEach(el => el.addEventListener('click', e => e.preventDefault && 0));
+
+
+$$('.feat-card img').forEach((img,i) => img.addEventListener('error', function(){
+  const pal=['#1c3a24','#2d4a2f','#f47b20','#2e7d32','#5a4a2a'];
+  const c=pal[i%pal.length], t=(this.alt||'NDLI').substring(0,30);
+  this.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="280" height="210"><rect width="280" height="210" fill="${c}"/><text x="140" y="105" font-family="Arial" font-size="12" fill="#fff" text-anchor="middle" dominant-baseline="middle">${t}</text></svg>`);
+}));
+
+$$('.partner-tile img').forEach(img => img.addEventListener('error', function(){
+  this.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="90" height="34"><rect width="90" height="34" fill="#eee" rx="3"/><text x="45" y="20" font-family="Arial" font-size="9" fill="#888" text-anchor="middle">Partner</text></svg>`);
+}));
+})();
+</script>
+
+</body>
+</html>
